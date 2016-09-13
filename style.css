@@ -4,4 +4,21 @@ body {
 
 .container {
   max-width: 800px;
+  margin: 0 auto;
+}
+
+table {
+  background-color: silver;
+}
+
+td {
+  height: 30px;
+}
+
+.editButton {
+  background-color: #b3c5e6;
+}
+
+.deleteButton {
+  background-color: #ae6969;
 }
