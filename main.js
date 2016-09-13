@@ -12,7 +12,7 @@ $("document").ready(function(){
 //Append leaderboard information and display them
 function displayLeaderboard(data){
 
-var table = $("<table>");
+var table = $("<table id='leaderTable'>");
 
   for (i = 0; i < data.length; i++){
     var row = $("<tr>");
@@ -35,5 +35,26 @@ var table = $("<table>");
 
     $(table).append(row);
     $("#leaderboard").append(table);
-    }
+  }
+
+  $("#leaderTable").append('<tr>'+
+                            '<td><input type="text" name="name"></input></td>' +
+                            '<td><input type="number" name="score"></input></td>' +
+                            '<td><button type="button" name="add" id="addButton">Add</input></td>' +
+                            '</tr>');
+
+  // var row = $("<tr>");
+  // var tdata = $("<td>");
+  //
+  // var name = $("<input>");
+  // $(input).attr({type: "text", name: "name"});
+  // $(row).append(input);
+  //
+  // var score = $("<input>");
+  // $(score).attr({type: "text", name: "score"});
+  // $(row).append(score);
+
+
+  $("#leaderboard").append(table);
+
 }
