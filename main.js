@@ -7,10 +7,10 @@ $("document").ready(function(){
     displayLeaderboard(data);
 ;  }); // get function
 
-  $("#addButton").click(function(){
-
+  $(document).on('click','#addButton',function(){
+    console.log("add button clicked");
     var name = $('#newName').val();
-    var score = $('newScore').val();
+    var score = $('#newScore').val();
 
     $.ajax({
       url: "http://localhost:3000/entries",
@@ -28,6 +28,7 @@ $("document").ready(function(){
 
 //Append leaderboard information and display them
 function displayLeaderboard(data){
+  $('#leaderboard').empty();
 
 var table = $("<table id='leaderTable'>");
 
@@ -57,20 +58,8 @@ var table = $("<table id='leaderTable'>");
   $("#leaderTable").append('<tr>'+
                             '<td><input type="text" name="name" id="newName"></input></td>' +
                             '<td><input type="number" name="score" id="newScore"></input></td>' +
-                            '<td><button type="button" name="add" id="addButton">Add</input></td>' +
+                            '<td><button type="button" name="add" id="addButton">Add</button></td>' +
                             '</tr>');
-
-  // var row = $("<tr>");
-  // var tdata = $("<td>");
-  //
-  // var name = $("<input>");
-  // $(input).attr({type: "text", name: "name"});
-  // $(row).append(input);
-  //
-  // var score = $("<input>");
-  // $(score).attr({type: "text", name: "score"});
-  // $(row).append(score);
-
 
   $("#leaderboard").append(table);
 
