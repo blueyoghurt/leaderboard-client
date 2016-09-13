@@ -7,7 +7,24 @@ $("document").ready(function(){
     displayLeaderboard(data);
 ;  }); // get function
 
-}); // ready Event Listener
+  $("#addButton").click(function(){
+
+    var name = $('#newName').val();
+    var score = $('newScore').val();
+
+    $.ajax({
+      url: "http://localhost:3000/entries",
+      type: "POST",
+      data: {name: name,
+            score: score}
+    }).done(function(response){
+        displayLeaderboard(response);
+      }).fail(function(){
+          console.log("loading failed");
+      })
+  }); //addButton
+
+}); // document ready Event Listener
 
 //Append leaderboard information and display them
 function displayLeaderboard(data){
@@ -38,8 +55,8 @@ var table = $("<table id='leaderTable'>");
   }
 
   $("#leaderTable").append('<tr>'+
-                            '<td><input type="text" name="name"></input></td>' +
-                            '<td><input type="number" name="score"></input></td>' +
+                            '<td><input type="text" name="name" id="newName"></input></td>' +
+                            '<td><input type="number" name="score" id="newScore"></input></td>' +
                             '<td><button type="button" name="add" id="addButton">Add</input></td>' +
                             '</tr>');
 
